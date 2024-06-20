@@ -1,0 +1,4 @@
+-r requesitos.txt
+
+ruff
+taskipy
