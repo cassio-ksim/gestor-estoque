@@ -9,7 +9,7 @@ class Local(BaseModel):
         ('D', 'Digital'),
     ]
 
-    name = models.CharField(
+    nome = models.CharField(
         max_length=50, verbose_name='nome do local armazenado'
     )  # noqa: E501
     tipo = models.CharField(

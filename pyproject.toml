@@ -7,6 +7,9 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+whitenoise = "^6.7.0"
+django-crispy-forms = "^2.2"
+crispy-bootstrap5 = "^2024.2"
 
 [build-system]
 requires = ["poetry-core"]
