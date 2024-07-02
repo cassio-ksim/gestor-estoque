@@ -67,7 +67,7 @@ class Movimentacao(BaseModel):
 
 class Embalagem(BaseModel):
     nome = models.CharField(max_length=50, verbose_name='nome da embalagem')
-    unidade = models.CharField(max_length=3, verbose_name='sigla da embalagem')
+    sigla = models.CharField(max_length=3, verbose_name='sigla da embalagem')
 
     class Meta:
         db_table = 'embalagens'
