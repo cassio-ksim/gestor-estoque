@@ -80,7 +80,7 @@ def editar_local(request, pk):
             return redirect('listar_locais')
     else:
         form = LocalForm(instance=local)
-    return render(request, 'produtos/editar_embalagem.html', {'form': form})
+    return render(request, 'produtos/editar_locais.html', {'form': form})
 
 def excluir_local(request, pk):
     local = Local.objects.get(pk=pk)
