@@ -15,7 +15,7 @@
                 <select name="tipo" class="form-control">
                     <option value="">Todos</option>
                     <option value="" {% if request.GET.tipo == "nome da embalagem" %}selected{% endif %}>embalagem</option>
-                    <option value="" {% if request.GET.tipo == "sigla da embalagem" %}selected{% endif %}>sigla</option>
+                    <option value="" {% if request.GET.tipo == "sigla da embalagem" %}selected{% endif %}>sigla</option>    
                 </select>
             </div>
             <div class="col-md-4">
@@ -36,10 +36,15 @@
                 <tr>
                     <td>{{ embalagem.nome }}</td>
                     <td>{{ embalagem.sigla }}</td>
+                    <td>
+                        <a href="{% url 'editar_embalagem' embalagem.pk %}" class="btn btn-primary btn-sm">Editar</a>
+                        <a href="{% url 'excluir_embalagem' embalagem.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
+
 {% endblock content %}

@@ -54,3 +54,35 @@ def adicionar_embalagem(request):
     else:
         form = EmbalagemForm()
     return render(request, 'produtos/adicionar_embalagem.html', {'form': form})
+
+def editar_embalagem(request, pk):
+    embalagem = Embalagem.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = EmbalagemForm(request.POST, instance=embalagem)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_embalagem')
+    else:
+        form = EmbalagemForm(instance=embalagem)
+    return render(request, 'produtos/editar_embalagem.html', {'form': form})
+
+def excluir_embalagem(request, pk):
+    embalagem = Embalagem.objects.get(pk=pk)
+    embalagem.delete()
+    return redirect('listar_embalagem')
+
+def editar_local(request, pk):
+    local = Local.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = LocalForm(request.POST, instance=local)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_locais')
+    else:
+        form = LocalForm(instance=local)
+    return render(request, 'produtos/editar_embalagem.html', {'form': form})
+
+def excluir_local(request, pk):
+    local = Local.objects.get(pk=pk)
+    local.delete()
+    return redirect('listar_locais')
