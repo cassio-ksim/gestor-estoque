@@ -3,12 +3,12 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2 class="mb-4">Adicionar Locais</h2>
+    <h2 class="mb-4">Adicionar Categoria</h2>
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
         <button type="submit" class="btn btn-primary">Salvar</button>
-        <a href="{% url 'listar_locais' %}" class="btn btn-secondary">Cancelar</a>
+        <a href="{% url 'listar_categorias' %}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 {% endblock content %}

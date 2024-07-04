@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 
-from .forms import EmbalagemForm, LocalForm
-from .models import Embalagem, Local
+from .forms import CategoriaForm, EmbalagemForm, LocalForm
+from .models import Categoria, Embalagem, Local
 
 
 def inicio(request):
@@ -82,7 +82,47 @@ def editar_local(request, pk):
         form = LocalForm(instance=local)
     return render(request, 'produtos/editar_locais.html', {'form': form})
 
+
 def excluir_local(request, pk):
     local = Local.objects.get(pk=pk)
     local.delete()
     return redirect('listar_locais')
+
+
+def listar_categorias(request):
+    nome = request.GET.get('nome')
+    categorias = Categoria.objects.all()
+    if nome:
+        categorias = categorias.filter(nome__icontains=nome)
+    return render(
+        request, 'produtos/listar_categorias.html', {'categorias': categorias}
+    )
+
+
+def adicionar_categorias(request):
+    if request.method == 'POST':
+        form = CategoriaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_categorias')
+    else:
+        form = CategoriaForm()
+    return render(request, 'produtos/adicionar_categorias.html', {'form': form})
+
+
+def editar_categoria(request, pk):
+    categoria = Categoria.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = CategoriaForm(request.POST, instance=categoria)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_categorias')
+    else:
+        form = CategoriaForm(instance=categoria)
+    return render(request, 'produtos/editar_categorias.html', {'form': form})
+
+
+def excluir_categoria(request, pk):
+    categoria = Categoria.objects.get(pk=pk)
+    categoria.delete()
+    return redirect('listar_categorias')
