@@ -107,7 +107,7 @@ def adicionar_categorias(request):
             return redirect('listar_categorias')
     else:
         form = CategoriaForm()
-    return render(request, 'produtos/adicionar_categorias.html', {'form': form})
+    return render(request, 'produtos/adicionar_categoria.html', {'form': form})
 
 
 def editar_categoria(request, pk):
