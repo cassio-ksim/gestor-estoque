@@ -69,6 +69,10 @@ class Embalagem(BaseModel):
     nome = models.CharField(max_length=50, verbose_name='nome da embalagem')
     sigla = models.CharField(max_length=3, verbose_name='sigla da embalagem')
 
+    def __str__(self):
+            return self.sigla
+                    
+
     class Meta:
         db_table = 'embalagens'
 
@@ -96,13 +100,19 @@ class Produto(BaseModel):
         db_table = 'produtos'
 
 
+
 class Categoria(BaseModel):
     nome = models.CharField(
         max_length=100, verbose_name='nome da categoria', unique=True
     )  # noqa: E501
 
+    def __str__(self):
+            return f'{self.nome}'
+
     class Meta:
         db_table = 'categorias'
+
+        
 
 
 class Fornecedor(BaseModel):

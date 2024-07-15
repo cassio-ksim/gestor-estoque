@@ -14,6 +14,15 @@ from .views import (
     listar_categorias,
     listar_embalagem,
     listar_locais,
+    listar_fornecedores,
+    adicionar_fornecedor,
+    editar_fornecedor,
+    excluir_fornecedor,
+    listar_produtos,
+    adicionar_produto,
+    editar_produto,
+    excluir_produto,
+
 )
 
 urlpatterns = [
@@ -31,4 +40,12 @@ urlpatterns = [
     path('categorias/adicionar/', adicionar_categorias, name='adicionar_categoria'),
     path('categoria/editar/<int:pk>/', editar_categoria, name='editar_categoria'),
     path('categoria/excluir/<int:pk>/', excluir_categoria, name='excluir_categoria'),
+    path('fornecedores/', listar_fornecedores, name='listar_fornecedores'),
+    path('fornecedor/adicionar/', adicionar_fornecedor, name='adicionar_fornecedor'),
+    path('fornecedor/editar/<int:pk>/', editar_fornecedor, name='editar_fornecedor'),
+    path('fornecedor/excluir/<int:pk>/', excluir_fornecedor, name='excluir_fornecedor'),
+    path('produtos/', listar_produtos, name='listar_produtos'),
+    path('produtos/adicionar/', adicionar_produto, name='adicionar_produto'),
+    path('produto/editar/<int:pk>/', editar_produto, name='editar_produto'),
+    path('produto/excluir/<int:pk>/', excluir_produto, name='excluir_produto'),
 ]
